@@ -6,7 +6,7 @@ COPY ./modules/ /tmp/eap/modules/
 COPY ./distribution/ /tmp/eap/
 COPY ./patches/ /tmp/eap/patches/
 
-EXPOSE 5455 9999 8009 8080 8443 3528 3529 7500 45700 7600 57600 5445 23364 5432 8090 4447 4712 4713 9990 8787
+EXPOSE 9999 8009 8080 8443 8090 9990
 
 ENV HOME /home/jboss
 ENV JBOSS_HOME /opt/jboss-eap-6.4
