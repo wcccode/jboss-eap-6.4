@@ -5,6 +5,9 @@ COPY ./trusted-root-ca/ /tmp/eap/trusted-root-ca/
 COPY ./modules/ /tmp/eap/modules/
 COPY ./distribution/ /tmp/eap/
 COPY ./patches/ /tmp/eap/patches/
+COPY ./domain-conf/ /tmp/eap/domain-conf/
+COPY ./standalone-conf/ /tmp/eap/standalone-conf/
+COPY ./deployments/ /tmp/eap/deployments/
 
 EXPOSE 9999 8009 8080 8443 8090 9990
 
@@ -18,6 +21,9 @@ RUN addgroup -g 1000 jboss && \
       mkdir -p $JBOSS_HOME && \
       unzip /tmp/eap/*.zip -d /opt && \
       for f in $(ls /tmp/eap/modules); do echo "Copy module $f" && cp -R /tmp/eap/modules/$f $JBOSS_HOME/modules/$f; done && \
+      for f in $(ls /tmp/eap/domain-conf); do echo "Copy domain-conf $f" && cp -R /tmp/eap/domain-conf/$f $JBOSS_HOME/domain/configuration/$f; done && \
+      for f in $(ls /tmp/eap/standalone-conf); do echo "Copy standalone-conf $f" && cp -R /tmp/eap/standalone-conf/$f $JBOSS_HOME/standalone/configuration/$f; done && \
+      for f in $(ls /tmp/eap/deployments); do echo "Copy standalone-deployments $f" && cp -R /tmp/eap/deployments/$f $JBOSS_HOME/standalone/deployments/$f; done && \
       for f in $(ls -v /tmp/eap/patches); do echo "Apply patch $f" && $JBOSS_HOME/bin/jboss-cli.sh "patch apply /tmp/eap/patches/$f"; done
 
 COPY ./entrypoint.sh $JBOSS_HOME/entrypoint.sh

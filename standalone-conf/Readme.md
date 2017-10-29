@@ -1,0 +1,1 @@
+Place the standalone config this folder, like standalone.xml

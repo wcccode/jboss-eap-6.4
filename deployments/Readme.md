@@ -1,0 +1,1 @@
+Place the deploy war inside this folder, like myapp.war

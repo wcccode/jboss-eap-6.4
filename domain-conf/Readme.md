@@ -1,0 +1,1 @@
+Place the domain config this folder, like domain.xml
