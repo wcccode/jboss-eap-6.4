@@ -1,4 +1,4 @@
-FROM openjdk:8u131-jdk-alpine
+FROM openjdk:8u121-jdk-alpine
 
 COPY ./jce-unlimited/ /tmp/eap/jce-unlimited/
 COPY ./trusted-root-ca/ /tmp/eap/trusted-root-ca/
@@ -11,10 +11,7 @@ EXPOSE 9999 8009 8080 8443 8090 9990
 ENV HOME /home/jboss
 ENV JBOSS_HOME /opt/jboss-eap-6.4
 
-RUN apk --no-cache add \
-      curl \
-      openssl && \
-      addgroup -g 1000 jboss && \
+RUN addgroup -g 1000 jboss && \
       adduser -u 1000 -D -s /sbin/nologin -g "JBoss" -G jboss jboss && \
       for f in $(ls /tmp/eap/jce-unlimited); do cp /tmp/eap/jce-unlimited/$f $JAVA_HOME/jre/lib/security/$f; done && \
       for f in $(ls /tmp/eap/trusted-root-ca); do $JAVA_HOME/bin/keytool -import -noprompt -trustcacerts -alias $(echo $f | sed 's/\(.*\)\..*/\1/') -file /tmp/eap/trusted-root-ca/$f -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit; done && \
