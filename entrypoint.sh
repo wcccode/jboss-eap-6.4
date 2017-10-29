@@ -6,7 +6,7 @@ if [ -z "$JBOSS_USER" ]; then
     JBOSS_USER=jboss
 fi
 if [ -z "$JBOSS_PASSWORD" ]; then
-    JBOSS_PASSWORD=Passw0rd!
+    JBOSS_PASSWORD=jboss@123
 fi
 if [ -z "$JBOSS_MODE" ]; then
     JBOSS_MODE=standalone
