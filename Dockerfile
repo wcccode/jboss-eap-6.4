@@ -1,4 +1,4 @@
-FROM openjdk:7-jdk-alpine
+FROM openjdk:8u131-jdk-alpine
 
 COPY ./jce-unlimited/ /tmp/eap/jce-unlimited/
 COPY ./trusted-root-ca/ /tmp/eap/trusted-root-ca/
