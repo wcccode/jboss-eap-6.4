@@ -1,4 +1,4 @@
-FROM openjdk:7-jdk-alpine
+FROM jdk:7-jdk-alpine
 
 COPY ./modules/ /tmp/eap/modules/
 COPY ./distribution/ /tmp/eap/
