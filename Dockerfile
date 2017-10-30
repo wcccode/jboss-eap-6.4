@@ -15,8 +15,7 @@ RUN addgroup -g 1000 jboss && \
       mkdir -p $JBOSS_HOME && \
       unzip /tmp/eap/*.zip -d /opt && \
       for f in $(ls /tmp/eap/modules); do echo "Copy module $f" && cp -R /tmp/eap/modules/$f $JBOSS_HOME/modules/$f; done && \
-      for f in $(ls /tmp/eap/standalone-conf); do echo "Copy standalone-conf $f" && cp -R /tmp/eap/standalone-conf/$f $JBOSS_HOME/standalone/configuration/$f; done && \
-      for f in $(ls /tmp/eap/deployments); do echo "Copy standalone-deployments $f" && cp -R /tmp/eap/deployments/$f $JBOSS_HOME/standalone/deployments/$f; done
+      for f in $(ls /tmp/eap/standalone-conf); do echo "Copy standalone-conf $f" && cp -R /tmp/eap/standalone-conf/$f $JBOSS_HOME/standalone/configuration/$f; done
 
 COPY ./entrypoint.sh $JBOSS_HOME/entrypoint.sh
 
