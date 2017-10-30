@@ -1,4 +1,4 @@
-FROM jdk:7-jdk-alpine
+FROM java:8-jre-alpine
 
 COPY ./modules/ /tmp/eap/modules/
 COPY ./distribution/ /tmp/eap/
